@@ -2,7 +2,8 @@
 	"name": "ngx-masonry",
 	"version": "0.5.2",
 	"description": "Angular component for https://github.com/desandro/masonry",
-	"main": "ngx-masonry.js",
+	"main": "dist/index.js",
+	"types": "./dist/index.d.ts",
 	"dependencies": {
 		"masonry-layout": "^4.2.0"
 	},
@@ -17,9 +18,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "tsc -w",
 		"tsc": "tsc",
-		"tsc:w": "tsc -w"
+		"tsc:w": "tsc -w",
+		"run": "ts-node ./src/index.ts",
+		"prepublishOnly": "tsc -p ./ --outDir dist/"
 	},
-	"typings": "./index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/gethinoakes/ngx-masonry.git"
