@@ -1,6 +1,6 @@
 {
 	"name": "ngx-masonry",
-	"version": "0.5.2",
+	"version": "0.5.3",
 	"description": "Angular component for https://github.com/desandro/masonry",
 	"main": "dist/index.js",
 	"types": "./dist/index.d.ts",
