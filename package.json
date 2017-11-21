@@ -1,6 +1,6 @@
 {
 	"name": "ngx-masonry",
-	"version": "0.5.1",
+	"version": "0.5.2",
 	"description": "Angular component for https://github.com/desandro/masonry",
 	"main": "ngx-masonry.js",
 	"dependencies": {
