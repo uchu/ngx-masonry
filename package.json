@@ -1,5 +1,5 @@
 {
-	"name": "angular2-masonry",
+	"name": "ngx-masonry",
 	"version": "0.5.0",
 	"description": "Angular component for https://github.com/desandro/masonry",
 	"main": "ngx-masonry.js",

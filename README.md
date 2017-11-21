@@ -1,35 +1,37 @@
-# [Masonry](https://github.com/desandro/masonry) module for Angular2
+# [Masonry](https://github.com/desandro/masonry) module for Angular (2+)
 
-[![npm version](https://badge.fury.io/js/angular2-masonry.svg)](https://www.npmjs.com/package/angular2-masonry)
+This package is a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to update it to work for newer Angular releases as no work seems to have been done on it for almost 12 months (at the time of writing this). **If** I have the time, I will look into further improvements. I can't guarantee any help.
 
-> angular2-masonry is in development and **not ready for production use**.
+[![npm version](https://badge.fury.io/js/ngx-masonry.svg)](https://www.npmjs.com/package/ngx-masonry)
+
+> ngx-masonry is in development and **not ready for production use**.
 > Feel free to install and try it out, but depend on it at your own risk.
 
 ## Installation
 
-`npm install angular2-masonry --save`
+`npm install ngx-masonry --save`
  
-If you're using SystemJS add `angular2-masonry` and `masonry-layout` to your configuration:
+If you're using SystemJS add `ngx-masonry` and `masonry-layout` to your configuration:
 ```json
 packages: {
-  "angular2-masonry": { "defaultExtension": "js", "main": "index" }
+  "ngx-masonry": { "defaultExtension": "js", "main": "index" }
 },
 map: {
-  "angular2-masonry": "node_modules/angular2-masonry",
+  "ngx-masonry": "node_modules/ngx-masonry",
   "masonry-layout": "node_modules/masonry-layout/dist/masonry.pkgd.js"
 }
 ```
 
 ## Usage
 
-Import `MasonryModule` into your app's modules:
+Import `NgxMasonryModule` into your app's modules:
 
 ``` typescript
-import { MasonryModule } from 'angular2-masonry';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   imports: [
-    MasonryModule
+    NgxMasonryModule
   ]
 })
 ```
@@ -38,22 +40,22 @@ import { MasonryModule } from 'angular2-masonry';
  @Component({
    selector: 'my-component',
    template: `
-     <masonry>
-       <masonry-brick class="brick" *ngFor="let brick of bricks">{{brick.title}}</masonry-brick>
-     </masonry>
+     <ngx-masonry>
+       <ngx-masonry-item class="masonry-item" *ngFor="let item of masonryItems">{{item.title}}</ngx-masonry-item>
+     </ngx-masonry>
      `,
      styles: [`
-       .brick { width: 200px; }
+       .masonry-item { width: 200px; }
      `]
  })
  class MyComponent {
-   bricks = [
-     {title: 'Brick 1'},
-     {title: 'Brick 2'},
-     {title: 'Brick 3'},
-     {title: 'Brick 4'},
-     {title: 'Brick 5'},
-     {title: 'Brick 6'}
+   masonryItems = [
+     {title: 'item 1'},
+     {title: 'item 2'},
+     {title: 'item 3'},
+     {title: 'item 4'},
+     {title: 'item 5'},
+     {title: 'item 6'}
    ]
  }
  ```
@@ -61,7 +63,7 @@ import { MasonryModule } from 'angular2-masonry';
 ## Configuration
 
 ### Options
-Read about Masonry options here: http://masonry.desandro.com/options.html
+Read about Masonry options here: [Masonry Options](http://masonry.desandro.com/options.html)
 
 The `options`-attribute takes an object with the following properties:
 * itemSelector: string;
@@ -81,19 +83,19 @@ The `options`-attribute takes an object with the following properties:
 
 Inline object:
 ```html
-<masonry [options]="{ transitionDuration: '0.8s' }"></masonry>
+<ngx-masonry [options]="{ transitionDuration: '0.8s' }"></ngx-masonry>
 ```
 
 From parent component:
 ```javascript
-import { MasonryOptions } from 'angular2-masonry';
+import { MasonryOptions } from 'ngx-masonry';
 
 public myOptions: MasonryOptions = { 
   transitionDuration: '0.8s' 
 };
 ```
 ```html
-<masonry [options]="myOptions"></masonry>
+<ngx-masonry [options]="myOptions"></ngx-masonry>
 ```
 
 ### imagesLoaded
@@ -102,27 +104,29 @@ public myOptions: MasonryOptions = {
 Delay adding brick until all images in brick are loaded.
 To activate imagesLoaded set `useImagesLoaded` to `true`.
 ```html
-<masonry [useImagesLoaded]="true"></masonry>
+<ngx-masonry [useImagesLoaded]="true"></ngx-masonry>
 ```
 index.html:
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 ```
+check the [ImagesLoaded](https://imagesloaded.desandro.com/) website for the latest version.
 
 ## Events
 ### layoutComplete: `EventEmitter<any[]>`
 Triggered after a layout and all positioning transitions have completed.
->http://masonry.desandro.com/events.html#layoutcomplete
+>[http://masonry.desandro.com/events.html#layoutcomplete](http://masonry.desandro.com/events.html#layoutcomplete)
 
 ### removeComplete: `EventEmitter<any[]>`
 Triggered after an item element has been removed.
->http://masonry.desandro.com/events.html#removecomplete
+>[http://masonry.desandro.com/events.html#removecomplete](http://masonry.desandro.com/events.html#removecomplete)
 
 ### Examples
 ```html
-<masonry (layoutComplete)="doStuff($event)" (removeComplete)="doOtherStuff($event)"></masonry>
+<ngx-masonry (layoutComplete)="doStuff($event)" (removeComplete)="doOtherStuff($event)"></ngx-masonry>
 ```
 
 ## Demo
-* Plunkr: https://plnkr.co/edit/mmi5tk6hvzEazYQUGZUC?p=preview
-* Demo project: https://github.com/jelgblad/angular2-masonry-demo
+coming soon
+<!-- * Plunkr: https://plnkr.co/edit/mmi5tk6hvzEazYQUGZUC?p=preview
+* Demo project: https://github.com/jelgblad/ngx-masonry-demo -->
