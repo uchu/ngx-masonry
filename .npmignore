@@ -10,6 +10,3 @@ Thumbs.db
 # Ignored files
 #*.ts
 #!*.d.ts
-
-# Demo app
-demo
