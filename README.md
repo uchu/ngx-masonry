@@ -2,6 +2,8 @@
 
 This package is a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to update it to work for newer Angular releases as no work seems to have been done on it for almost 12 months (at the time of writing this). **If** I have the time, I will look into further improvements. I can't guarantee any help.
 
+This updated version is also compatible with Angular Universal server side rendering (SSR)
+
 [![npm version](https://badge.fury.io/js/ngx-masonry.svg)](https://www.npmjs.com/package/ngx-masonry)
 
 > ngx-masonry is in development and **not ready for production use**.
