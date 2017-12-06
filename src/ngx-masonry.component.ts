@@ -23,7 +23,12 @@ import { NgxMasonryOptions } from './ngx-masonry-options.interface';
 
 @Component({
 	selector: '[ngx-masonry], ngx-masonry',
-	template: '<ng-content></ng-content>'
+	template: '<ng-content></ng-content>',
+	styles: [`
+		:host {
+			display: block;
+		}
+	`],
 })
 export class NgxMasonryComponent implements OnInit, OnDestroy {
 	constructor(
