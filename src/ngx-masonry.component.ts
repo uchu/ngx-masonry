@@ -5,13 +5,19 @@ import {
 	Input,
 	Output,
 	ElementRef,
-	EventEmitter
+	EventEmitter,
+	PLATFORM_ID,
+	Inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 declare var require: any;
 declare var imagesLoaded: any;
 
-var masonry = require('masonry-layout');
+if (!(typeof process === 'object' && process + '' === '[object process]')) {
+	// is browser
+  var Masonry = require('masonry-layout');
+}
 
 import { NgxMasonryOptions } from './ngx-masonry-options.interface';
 
@@ -20,8 +26,10 @@ import { NgxMasonryOptions } from './ngx-masonry-options.interface';
 	template: '<ng-content></ng-content>'
 })
 export class NgxMasonryComponent implements OnInit, OnDestroy {
-	constructor(private _element: ElementRef) {}
-
+	constructor(
+		@Inject(PLATFORM_ID) private platformId: any,
+		private _element: ElementRef) {}
+	
 	public _msnry: any;
 	private _imagesLoaded = null;
 
@@ -47,23 +55,20 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 			this.options.itemSelector = '[ngx-masonry-item], ngx-masonry-item';
 		}
 
-		// Set element display to block
-		if (this._element.nativeElement.tagName === 'MASONRY') {
-			this._element.nativeElement.style.display = 'block';
+		if (isPlatformBrowser(this.platformId)) {			
+			// Initialize Masonry
+			this._msnry = new Masonry(this._element.nativeElement, this.options);
+
+			// console.log('AngularMasonry:', 'Initialized');
+
+			// Bind to events
+			this._msnry.on('layoutComplete', (items: any) => {
+				this.layoutComplete.emit(items);
+			});
+			this._msnry.on('removeComplete', (items: any) => {
+				this.removeComplete.emit(items);
+			});
 		}
-
-		// Initialize Masonry
-		this._msnry = new masonry(this._element.nativeElement, this.options);
-
-		// console.log('AngularMasonry:', 'Initialized');
-
-		// Bind to events
-		this._msnry.on('layoutComplete', (items: any) => {
-			this.layoutComplete.emit(items);
-		});
-		this._msnry.on('removeComplete', (items: any) => {
-			this.removeComplete.emit(items);
-		});
 	}
 
 	ngOnDestroy() {
@@ -119,6 +124,6 @@ export class NgxMasonryComponent implements OnInit, OnDestroy {
 		// Layout items
 		this.layout();
 
-		console.log('AngularMasonry:', 'Brick removed');
+		// console.log('AngularMasonry:', 'Brick removed');
 	}
 }

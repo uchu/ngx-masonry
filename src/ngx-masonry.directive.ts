@@ -4,10 +4,12 @@ import {
 	ElementRef,
 	forwardRef,
 	OnDestroy,
-	AfterViewInit
+	AfterViewInit,
+	PLATFORM_ID,	
 } from '@angular/core';
 
 import { NgxMasonryComponent } from './ngx-masonry.component';
+import { isPlatformBrowser } from '@angular/common';
 
 interface MutationWindow extends Window {
 	MutationObserver: any;
@@ -23,16 +25,21 @@ export class NgxMasonryDirective implements OnDestroy, AfterViewInit {
 	constructor(
 		private _element: ElementRef,
 		@Inject(forwardRef(() => NgxMasonryComponent))
-		private _parent: NgxMasonryComponent
+		private _parent: NgxMasonryComponent,
+		@Inject(PLATFORM_ID) private platformId: any,		
 	) {}
 
 	ngAfterViewInit() {
-		this._parent.add(this._element.nativeElement);
-		this.watchForHtmlChanges();
+		if (isPlatformBrowser(this.platformId)) {
+			this._parent.add(this._element.nativeElement);
+			this.watchForHtmlChanges();			
+		}
 	}
 
 	ngOnDestroy() {
-		this._parent.remove(this._element.nativeElement);
+		if (isPlatformBrowser(this.platformId)) {
+			this._parent.remove(this._element.nativeElement);
+		}
 	}
 
 	/** When HTML in brick changes dinamically, observe that and change layout */
