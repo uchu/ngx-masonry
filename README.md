@@ -60,6 +60,13 @@ import { NgxMasonryModule } from 'ngx-masonry';
  }
  ```
  
+ You will also need to add this css to your parent stylesheet for the masonry layout to work correctly:
+```
+ngx-masonry {
+  display: block !important;
+}
+```
+ 
 ## Configuration
 
 ### Options
