@@ -1,6 +1,8 @@
 # [Masonry](https://github.com/desandro/masonry) module for Angular (2+)
 
-This package is a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to update it to work for newer Angular releases as no work seems to have been done on it for almost 12 months (at the time of writing this). **If I have the time I will look into further improvements, but please do not expect support as I don't have the time for that**.
+This package is a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to update it to work for newer Angular releases as no work seems to have been done on it for almost 12 months (at the time of writing this). 
+
+**If I have the time I will look into further improvements, but please do not expect support as I don't have the time for that**.
 
 This updated version is also compatible with Angular Universal server side rendering (SSR)
 
