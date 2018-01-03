@@ -1,5 +1,5 @@
 {
-	"name": "ngx-masonry-timely",
+	"name": "ngx-masonry",
 	"version": "0.5.3",
 	"description": "Angular component for https://github.com/desandro/masonry",
 	"main": "./ngx-masonry.js",
@@ -24,10 +24,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/uchu/ngx-masonry.git"
+		"url": "git+https://github.com/gethinoakes/ngx-masonry.git"
 	},
 	"keywords": [
-		"angular4",
+		"angular2",
 		"ngx",
 		"component",
 		"desandro",
@@ -36,7 +36,7 @@
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/uchu/ngx-masonry/issues"
+		"url": "https://github.com/gethinoakes/ngx-masonry/issues"
 	},
-	"homepage": "https://github.com/uchu/ngx-masonry"
+	"homepage": "https://github.com/gethinoakes/ngx-masonry"
 }
